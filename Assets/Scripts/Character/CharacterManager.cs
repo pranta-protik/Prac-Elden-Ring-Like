@@ -4,9 +4,13 @@ namespace ERL
 {
     public class CharacterManager : MonoBehaviour
     {
-        private void Awake()
+        protected virtual void Awake()
         {
             DontDestroyOnLoad(gameObject);
+        }
+
+        protected virtual void Update()
+        {
         }
     }
 }

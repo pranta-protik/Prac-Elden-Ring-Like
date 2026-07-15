@@ -61,7 +61,10 @@ PrefabInstance:
       addedObject: {fileID: 8726354543690015404}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7692360718100418300}
+      addedObject: {fileID: 950820261850054190}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4375486627501329142}
   m_SourcePrefab: {fileID: 100100000, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
 --- !u!1 &5310636377385760660 stripped
 GameObject:
@@ -94,7 +97,7 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!114 &7692360718100418300
+--- !u!114 &950820261850054190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,6 +106,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5310636377385760660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0e64d4d47dd450cbfd071fa7749fdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 30560d749b6de44909b81d4b744d8847, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ERL.CharacterManager
+  m_EditorClassIdentifier: Assembly-CSharp::ERL.PlayerManager
+  _playerLocomotionManager: {fileID: 4375486627501329142}
+--- !u!114 &4375486627501329142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310636377385760660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2344bc696545149c29f64db9c0cd0121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ERL.PlayerLocomotionManager
