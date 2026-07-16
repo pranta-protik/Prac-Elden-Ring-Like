@@ -38,5 +38,9 @@ namespace ERL
                     _characterNetworkManager.networkRotationSmoothTime);
             }
         }
+
+        protected virtual void LateUpdate()
+        {
+        }
     }
 }

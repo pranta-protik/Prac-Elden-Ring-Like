@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,11 +5,19 @@ namespace ERL
 {
     public class PlayerInputManager : DontDestroyOnLoadSingleton<PlayerInputManager>
     {
-        [SerializeField] private Vector2 _movementInput;
+        [Header("Player Movement Input")] [SerializeField]
+        private Vector2 _movementInput;
+
         [SerializeField] private bool _walkInput;
         public float horizontalInput;
         public float verticalInput;
         public float moveAmount;
+
+        [Header("Camera Movement Input")] [SerializeField]
+        private Vector2 _cameraInput;
+
+        public float cameraHorizontalInput;
+        public float cameraVerticalInput;
 
         private PlayerControls _playerControls;
 
@@ -30,6 +37,8 @@ namespace ERL
             if (newScene.buildIndex == WorldSaveGameManager.Instance.GetWorldSceneIndex())
             {
                 Instance.enabled = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
@@ -45,6 +54,7 @@ namespace ERL
                 _playerControls.PlayerMovement.Movement.performed += i => _movementInput = i.ReadValue<Vector2>();
                 _playerControls.PlayerActions.Walk.performed += i => _walkInput = true;
                 _playerControls.PlayerActions.Walk.canceled += i => _walkInput = false;
+                _playerControls.PlayerCamera.Movement.performed += i => _cameraInput = i.ReadValue<Vector2>();
             }
 
             _playerControls.Enable();
@@ -53,6 +63,7 @@ namespace ERL
         private void Update()
         {
             HandleMovementInput();
+            HandleCameraInput();
         }
 
         private void OnDestroy()
@@ -90,6 +101,12 @@ namespace ERL
             {
                 moveAmount = 1f;
             }
+        }
+
+        private void HandleCameraInput()
+        {
+            cameraHorizontalInput = _cameraInput.x;
+            cameraVerticalInput = _cameraInput.y;
         }
     }
 }

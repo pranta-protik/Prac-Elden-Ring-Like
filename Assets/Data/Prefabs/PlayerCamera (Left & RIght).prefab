@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &777517278624954866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9204567094245546576}
+  m_Layer: 0
+  m_Name: CameraPivot (Up & Down)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9204567094245546576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777517278624954866}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8704540654054676825}
+  m_Father: {fileID: 5059883705151350293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7925228854052148916
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +43,7 @@ GameObject:
   - component: {fileID: 5059883705151350293}
   - component: {fileID: -6544406641064613780}
   m_Layer: 0
-  m_Name: PlayerCamera
+  m_Name: PlayerCamera (Left & RIght)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +62,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8704540654054676825}
+  - {fileID: 9204567094245546576}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-6544406641064613780
@@ -45,7 +77,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6604e1fc3e7540c3965e50382944b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ERL.PlayerCamera
-  cameraObject: {fileID: 8009971695387084918}
+  cameraObject: {fileID: 1691534997378635839}
+  _cameraPivotTransform: {fileID: 9204567094245546576}
+  playerManager: {fileID: 0}
+  _cameraSmoothTime: 0
+  _leftAndRightRotationSpeed: 25
+  _upAndDownRotationSpeed: 25
+  _minimumPivot: -30
+  _maximumPivot: 60
+  _cameraCollisionRadius: 0.2
+  _collideWithLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  _leftAndRightLookAngle: 0
+  _upAndDownLookAngle: 0
 --- !u!1 &8009971695387084918
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,11 +119,11 @@ Transform:
   m_GameObject: {fileID: 8009971695387084918}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5059883705151350293}
+  m_Father: {fileID: 9204567094245546576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1691534997378635839
 Camera:
