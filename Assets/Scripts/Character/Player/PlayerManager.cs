@@ -7,11 +7,6 @@ namespace ERL
     {
         [SerializeField, Self] private PlayerLocomotionManager _playerLocomotionManager;
 
-        private void OnValidate()
-        {
-            this.ValidateRefs();
-        }
-
         protected override void Awake()
         {
             base.Awake();
@@ -20,6 +15,8 @@ namespace ERL
         protected override void Update()
         {
             base.Update();
+
+            if (!IsOwner) return;
             _playerLocomotionManager.HandleAllMovement();
         }
     }

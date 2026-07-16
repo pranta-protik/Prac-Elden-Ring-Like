@@ -58,6 +58,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6222898965990657466}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8726354543690015404}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
       insertIndex: -1
@@ -65,12 +68,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4375486627501329142}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5581252217985350205}
   m_SourcePrefab: {fileID: 100100000, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
 --- !u!1 &5310636377385760660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dd835786ce6dd4635bb341bae3dbcc89, type: 3}
   m_PrefabInstance: {fileID: 5004135202236484293}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &6222898965990657466
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310636377385760660}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.7
+  m_Radius: 0.23
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!114 &8726354543690015404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30560d749b6de44909b81d4b744d8847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ERL.PlayerManager
+  ShowTopMostFoldoutHeaderGroup: 1
+  characterController: {fileID: 6222898965990657466}
+  _characterNetworkManager: {fileID: 5581252217985350205}
   _playerLocomotionManager: {fileID: 4375486627501329142}
 --- !u!114 &4375486627501329142
 MonoBehaviour:
@@ -122,3 +156,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2344bc696545149c29f64db9c0cd0121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ERL.PlayerLocomotionManager
+  _playerManager: {fileID: 950820261850054190}
+  _walkingSpeed: 2
+  _runningSpeed: 5
+  _rotationSpeed: 15
+  horizontalMovement: 0
+  verticalMovement: 0
+  moveAmount: 0
+--- !u!114 &5581252217985350205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310636377385760660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5fb70487e742bfbdf2e33d7eef5f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ERL.PlayerNetworkManager
+  ShowTopMostFoldoutHeaderGroup: 1
+  networkPosition:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  networkPositionVelocity: {x: 0, y: 0, z: 0}
+  networkPositionSmoothTime: 0.1
+  networkRotation:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: {x: 0, y: 0, z: 0, w: 1}
+  networkRotationSmoothTime: 0.1
