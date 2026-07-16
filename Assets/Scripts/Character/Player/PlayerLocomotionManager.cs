@@ -12,7 +12,7 @@ namespace ERL
 
         public float horizontalMovement;
         public float verticalMovement;
-        public bool moveAmount;
+        public float moveAmount;
 
         private Vector3 _moveDirection;
         private Vector3 _rotationDirection;
@@ -22,21 +22,42 @@ namespace ERL
             base.Awake();
         }
 
+        protected override void Update()
+        {
+            base.Update();
+
+            if (_playerManager.IsOwner)
+            {
+                _playerManager.characterNetworkManager.networkHorizontalMovement.Value = horizontalMovement;
+                _playerManager.characterNetworkManager.networkVerticalMovement.Value = verticalMovement;
+                _playerManager.characterNetworkManager.networkMoveAmount.Value = moveAmount;
+            }
+            else
+            {
+                horizontalMovement = _playerManager.characterNetworkManager.networkHorizontalMovement.Value;
+                verticalMovement = _playerManager.characterNetworkManager.networkVerticalMovement.Value;
+                moveAmount = _playerManager.characterNetworkManager.networkMoveAmount.Value;
+
+                _playerManager.playerAnimatorManager.UpdateAnimatorMovementParameters(0f, moveAmount);
+            }
+        }
+
         public void HandleAllMovement()
         {
             HandleGroundedMovement();
             HandleRotation();
         }
 
-        private void GetHorizontalAndVerticalInputs()
+        private void GetMovementValues()
         {
             horizontalMovement = PlayerInputManager.Instance.horizontalInput;
             verticalMovement = PlayerInputManager.Instance.verticalInput;
+            moveAmount = PlayerInputManager.Instance.moveAmount;
         }
 
         private void HandleGroundedMovement()
         {
-            GetHorizontalAndVerticalInputs();
+            GetMovementValues();
 
             _moveDirection = PlayerCamera.Instance.transform.forward * verticalMovement + PlayerCamera.Instance.transform.right * horizontalMovement;
             _moveDirection.Normalize();

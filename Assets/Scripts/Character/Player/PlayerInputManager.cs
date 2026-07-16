@@ -19,6 +19,7 @@ namespace ERL
         public float cameraHorizontalInput;
         public float cameraVerticalInput;
 
+        [HideInInspector] public PlayerManager playerManager;
         private PlayerControls _playerControls;
 
         protected override void Awake()
@@ -101,6 +102,10 @@ namespace ERL
             {
                 moveAmount = 1f;
             }
+
+            if (playerManager == null) return;
+
+            playerManager.playerAnimatorManager.UpdateAnimatorMovementParameters(0f, moveAmount);
         }
 
         private void HandleCameraInput()

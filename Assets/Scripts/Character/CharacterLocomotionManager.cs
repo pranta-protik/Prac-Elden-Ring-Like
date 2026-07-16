@@ -7,5 +7,9 @@ namespace ERL
         protected virtual void Awake()
         {
         }
+
+        protected virtual void Update()
+        {
+        }
     }
 }

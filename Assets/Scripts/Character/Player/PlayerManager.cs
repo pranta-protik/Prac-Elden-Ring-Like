@@ -1,11 +1,11 @@
 using KBCore.Refs;
-using UnityEngine;
 
 namespace ERL
 {
     public class PlayerManager : CharacterManager
     {
-        [SerializeField, Self] private PlayerLocomotionManager _playerLocomotionManager;
+        [Self] public PlayerLocomotionManager playerLocomotionManager;
+        [Self] public PlayerAnimatorManager playerAnimatorManager;
 
         protected override void Awake()
         {
@@ -17,7 +17,7 @@ namespace ERL
             base.Update();
 
             if (!IsOwner) return;
-            _playerLocomotionManager.HandleAllMovement();
+            playerLocomotionManager.HandleAllMovement();
         }
 
         protected override void LateUpdate()
@@ -31,7 +31,11 @@ namespace ERL
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
-            if (IsOwner) PlayerCamera.Instance.playerManager = this;
+            if (IsOwner)
+            {
+                PlayerCamera.Instance.playerManager = this;
+                PlayerInputManager.Instance.playerManager = this;
+            }
         }
     }
 }

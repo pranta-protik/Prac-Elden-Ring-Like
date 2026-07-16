@@ -7,7 +7,8 @@ namespace ERL
     public class CharacterManager : NetworkBehaviour
     {
         [Self] public CharacterController characterController;
-        [SerializeField, Self] private CharacterNetworkManager _characterNetworkManager;
+        [Self] public Animator animator;
+        [Self] public CharacterNetworkManager characterNetworkManager;
 
         private void OnValidate()
         {
@@ -23,19 +24,19 @@ namespace ERL
         {
             if (IsOwner)
             {
-                _characterNetworkManager.networkPosition.Value = transform.position;
-                _characterNetworkManager.networkRotation.Value = transform.rotation;
+                characterNetworkManager.networkPosition.Value = transform.position;
+                characterNetworkManager.networkRotation.Value = transform.rotation;
             }
             else
             {
                 transform.position = Vector3.SmoothDamp(transform.position,
-                    _characterNetworkManager.networkPosition.Value,
-                    ref _characterNetworkManager.networkPositionVelocity,
-                    _characterNetworkManager.networkPositionSmoothTime);
+                    characterNetworkManager.networkPosition.Value,
+                    ref characterNetworkManager.networkPositionVelocity,
+                    characterNetworkManager.networkPositionSmoothTime);
 
                 transform.rotation = Quaternion.Slerp(transform.rotation,
-                    _characterNetworkManager.networkRotation.Value,
-                    _characterNetworkManager.networkRotationSmoothTime);
+                    characterNetworkManager.networkRotation.Value,
+                    characterNetworkManager.networkRotationSmoothTime);
             }
         }
 

@@ -8,7 +8,7 @@ namespace ERL
     {
         [Child] public Camera cameraObject;
         [SerializeField, Anywhere] private Transform _cameraPivotTransform;
-        public PlayerManager playerManager;
+        [HideInInspector] public PlayerManager playerManager;
 
         [Header("Camera Settings")] [SerializeField]
         private float _cameraSmoothTime = 0.1f;
